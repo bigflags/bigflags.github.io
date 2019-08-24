@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Yang2020 - Phone Banking Stats</title>
+        <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js"></script>
+        <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" >
+        <link rel="stylesheet" type="text/css" href="/css/site.css" >
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    </head>
+
+    <body>
+        <main role="main" id="main">
+            <div class="container">
+                <div data-bind="text:title"></div>
+                <div>
+                    Daily: <div data-bind="text:dailyGoal().calls" ></div>
+                </div>
+                <div>
+                    Weekly: <div data-bind="text:weeklyGoal().calls" ></div>
+                </div>
+
+ 
+                <div class="row ">
+                    <div class="col-md-12 goal" data-bind="with: weeklyGoal()" >
+                        <h2>Calls This Week</h2>
+                        <div class="goal-label"><span data-bind="text:calls"></span>/<span data-bind="text:callsGoal"></span>&nbsp;calls</div>
+                        <progress-bar-yang params="progress: calls/callsGoal " ></progress-bar-yang>
+                    </div>
+                   
+                </div>
+            </div>
+            
+
+
+        </main>
+
+        <script type="text/template" id="progressBarYang">
+
+            <svg
+            xmlns:dc="http://purl.org/dc/elements/1.1/"
+            xmlns:cc="http://creativecommons.org/ns#"
+            xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+            xmlns:svg="http://www.w3.org/2000/svg"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            version="1.1"
+            id="svg2"
+            viewBox="0 0 841.00056 83.970419"
+>
+           <defs>
+             <!-- 65, 19 -->
+             <clipPath id="bar-clip" data-bind="attr:{id: barId() }" >
+                 <rect  y="0" height="5000" data-bind="attr:{width:progressWidth,x:clipX}" />
+             </clipPath>
+
+           </defs>
+           <metadata
+              id="metadata7">
+             <rdf:RDF>
+               <cc:Work
+                  rdf:about="">
+                 <dc:format>image/svg+xml</dc:format>
+                 <dc:type
+                    rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+                 <dc:title></dc:title>
+               </cc:Work>
+             </rdf:RDF>
+           </metadata>
+       
+             <path
+                id="ProgressBorder"
+                d="m 20.500001,44.470417 c -10.443914,0 -19.0000009,8.556 -19.0000009,19 0,10.4438 8.5560639,19 19.0000009,19 l 0.002,0 c 6.999262,0 13.02336,-4.0537 16.287109,-9.957 l 167.43165,0 c 3.26183,5.8999 9.28102,9.9505 16.27539,9.957 a 3.0003,3.0003 0 0 0 0.002,0 l 0.004,0 c 6.99927,0 13.02336,-4.0537 16.28711,-9.957 l 167.43359,0 c 3.2619,5.8996 9.27928,9.9505 16.27344,9.957 a 3.0003,3.0003 0 0 0 0.002,0 l 0.004,0 c 6.99927,0 13.02336,-4.0537 16.28711,-9.957 l 167.43359,0 c 3.2619,5.8996 9.27928,9.9505 16.27344,9.957 a 3.0003,3.0003 0 0 0 0.002,0 l 0.004,0 c 6.99927,0 13.02336,-4.0537 16.28711,-9.957 l 167.43359,0 c 3.2619,5.8996 9.27928,9.9505 16.27344,9.957 a 3.0003,3.0003 0 0 0 0.002,0 l 0.002,0 c 10.44394,0 19,-8.5562 19,-19 0,-10.444 -8.55608,-19 -19,-19 l -0.002,0 a 3.0003,3.0003 0 0 0 -0.004,0 c -6.60349,0.011 -12.38126,3.6368 -15.77539,9.043 l -168.42382,0 c -3.39705,-5.411 -9.18033,-9.0407 -15.79102,-9.043 a 3.0003,3.0003 0 0 0 -0.002,0 l -0.004,0 a 3.0003,3.0003 0 0 0 -0.004,0 c -6.60349,0.011 -12.38126,3.6368 -15.77539,9.043 l -168.42382,0 c -3.39705,-5.411 -9.18033,-9.0407 -15.79102,-9.043 a 3.0003,3.0003 0 0 0 -0.002,0 l -0.004,0 a 3.0003,3.0003 0 0 0 -0.004,0 c -6.60349,0.011 -12.38126,3.6368 -15.77539,9.043 l -168.42382,0 c -3.39705,-5.411 -9.18033,-9.0407 -15.79102,-9.043 a 3.0003,3.0003 0 0 0 -0.002,0 l -0.004,0 a 3.0003,3.0003 0 0 0 -0.004,0 c -6.60349,0.011 -12.38126,3.6368 -15.77539,9.043 l -168.42383,0 c -3.397048,-5.411 -9.180326,-9.0407 -15.791016,-9.043 a 3.0003,3.0003 0 0 0 -0.002,0 l -0.002,0 z"
+                style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;baseline-shift:baseline;text-anchor:start;white-space:normal;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:3.00000024;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+             <path
+                data-bind="attr:{ 'clip-path': barClipPath() }"
+                id="ProgressFill"
+                d="m 20.500003,49.470417 a 14.000001,14.000001 0 0 0 -14.0000029,14 14.000001,14.000001 0 0 0 14.0000029,14 14.000001,14.000001 0 0 0 13.398439,-9.957 l 173.210958,0 a 14.000001,14.000001 0 0 0 13.39062,9.957 14.000001,14.000001 0 0 0 13.39844,-9.957 l 173.21098,0 a 14.000001,14.000001 0 0 0 13.39062,9.957 14.000001,14.000001 0 0 0 13.39844,-9.957 l 173.21096,0 a 14.000001,14.000001 0 0 0 13.39062,9.957 14.000001,14.000001 0 0 0 13.39844,-9.957 l 173.21096,0 a 14.000001,14.000001 0 0 0 13.39062,9.957 14.000001,14.000001 0 0 0 14.00002,-14 14.000001,14.000001 0 0 0 -14.00002,-14 14.000001,14.000001 0 0 0 -13.07617,9.043 l -173.83596,0 a 14.000001,14.000001 0 0 0 -13.08789,-9.043 14.000001,14.000001 0 0 0 -13.07617,9.043 l -173.83596,0 a 14.000001,14.000001 0 0 0 -13.08789,-9.043 14.000001,14.000001 0 0 0 -13.07617,9.043 l -173.83598,0 a 14.000001,14.000001 0 0 0 -13.08789,-9.043 14.000001,14.000001 0 0 0 -13.07617,9.043 l -173.835955,0 a 14.000001,14.000001 0 0 0 -13.087892,-9.043 z"
+                style="opacity:1;fill:#da3248;fill-opacity:1;stroke:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+                  <image
+
+                  data-bind="attr:{x:yangX}"                  
+                width="69.000023"
+                height="69.000023"
+                preserveAspectRatio="none"
+                xlink:href="/image/YangAnimsForMountain_IDLE.gif"
+                id="image4346"
+                x="-10.878293"
+                y="0" />
+      
+         </svg> 
+        </script>
+
+        <script src="/js/app.js" ></script>
+    </body>
+
+</html>

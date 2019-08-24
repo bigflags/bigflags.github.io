@@ -1,0 +1,10 @@
+{
+    "daily": {
+        "calls":80,
+        "callsGoal":100
+    }, 
+    "weekly": {
+        "calls":1000,
+        "callsGoal":5000
+    }      
+}
