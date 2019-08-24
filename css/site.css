@@ -1,11 +1,52 @@
 
+.container {
+    background:white;
+}
+
+body {
+    background: rgb(0, 25, 63);
+}
 
 .goal {
     text-align: center;
 
 }
 
+.metric {
+    border:1px solid;
+    padding:10px;
+    padding-bottom: 20px;
+}
+
+h1 {
+    color: #DA3248;
+    display: inline-block;
+    border-bottom:#002D70 10px solid;
+    padding-bottom: 0px;
+    text-transform: uppercase;
+    text-align:center;
+    width:100%;
+}
+
+h2 {
+    color:#002D70; 
+    text-transform: uppercase;
+}
+
+.goal-heading {
+    text-transform: uppercase;
+    
+    font-weight:bold;
+}
+
 .goal-label {
     font-size: 130%;
-
+    font-weight: bold;
 }
+
+div.heading {
+    padding-top:50px;
+    padding-bottom:30px;
+}
+
+ 

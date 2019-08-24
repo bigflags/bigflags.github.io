@@ -1,10 +1,48 @@
 {
-    "daily": {
-        "calls":80,
-        "callsGoal":100
+    "dailyCalls": {
+        "current":1700,
+        "goal":1000
     }, 
-    "weekly": {
-        "calls":1000,
-        "callsGoal":5000
-    }      
+    "weeklyCalls": {
+        "current":5000,
+        "goal":7000
+    },
+    "dailyConversations" : {
+        "current":105,
+        "goal": 100
+    },
+    "mailingListSignups" : {
+        "current":3,
+        "goal": 25
+    },
+    "bankersOnboarded": {
+        "current":25,
+        "goal":100
+
+    },    
+
+    "leadersByConversations": 
+        [{"name":"Sally S.","total":820},
+         {"name":"Mike M.","total":730},        
+         {"name":"Jake J.","total":720},        
+         {"name":"Patty P.","total":320},        
+         {"name":"Barry W.","total":120},        
+         {"name":"Kenny K.","total":130},        
+         {"name":"Grant G.","total":24},
+         {"name":"Leila L.","total":23},
+         {"name":"Jess J.","total":10},
+         {"name":"Bob B.","total":10}],
+    "leadersByMinutes": 
+    [{"name":"Mike M.","total":7300},        
+    {"name":"Jake J.","total":7200}, 
+    {"name":"Sally S.","total":8200},
+    {"name":"Grant G.","total":240},
+    {"name":"Leila L.","total":230},       
+     {"name":"Patty P.","total":320},        
+     {"name":"Barry W.","total":120},        
+     {"name":"Kenny K.","total":130},        
+     {"name":"Jess J.","total":100},
+     {"name":"Bob B.","total":100}]
+
+
 }

@@ -34,7 +34,28 @@ BankingStats.Component.YangBarModel = BankingStats.Component.YangBarModel  || fu
 
 }
 
+BankingStats.Component.GoNoGoModel = BankingStats.Component.GoNoGoModel  || function(params){
+    var me=this;
+    console.log(JSON.stringify(params));
+    var toExceed= params.goal * 1.2;
+    var completed=params.current>=params.goal,
+        exceeded=params.current>toExceed;
 
+    me.current=ko.observable( setVisiblity(!completed));
+    me.goal=ko.observable( setVisiblity(completed && !exceeded));
+    me.exceeded=ko.observable( setVisiblity(exceeded));
+ 
+
+    function setVisiblity(yes){
+        return yes ? "visible" : "hidden"
+    }
+}
+
+ko.components.register('gague-gonogo',{viewModel: function(params,comonentInfo){
+
+    return  new BankingStats.Component.GoNoGoModel(params);
+},
+template:$('#gonogo').html()});
 
 ko.components.register('progress-bar-yang',{
     viewModel:{ createViewModel:function(params,comonentInfo){
@@ -49,18 +70,29 @@ BankingStats.app = BankingStats.app || (function(){
     var me = this;
 
     me.init=function(){
-      me.dailyGoal=ko.observable({calls:10,callsGoal:1000});   
-      me.weeklyGoal=ko.observable({calls:20,callsGoal:1000});
-      me.title=ko.observable("farge");
-    
+      me.dailyCalls=ko.observable({current:10,goal:1000});   
+      me.weeklyCalls=ko.observable({current:20,goal:1000});
+      me.bankersOnboarded=ko.observable({current:20,goal:1000});
+      me.mailingListSignups=ko.observable({current:20,goal:1000});
+      me.dailyConversations=ko.observable({current:20,goal:1000});
+      me.leadersByConversations=ko.observable([]);
+      me.leadersByMinutes=ko.observable([]);
+
+
       ko.applyBindings(me,document.getElementById('main'));
       refreshData();
     }
 
     function refreshData(){
         $.ajax({url:"/data/stats.json"}).done(function(data){
-            me.dailyGoal(data.daily);
-            me.weeklyGoal(data.weekly);
+            console.log("yah?");
+            me.dailyCalls(data.dailyCalls);
+            me.weeklyCalls(data.weeklyCalls);
+            me.bankersOnboarded(data.bankersOnboarded);
+            me.mailingListSignups(data.mailingListSignups);
+            me.dailyConversations(data.dailyConversations);
+            me.leadersByConversations(data.leadersByConversations);
+            me.leadersByMinutes(data.leadersByMinutes);
         })
     }
 

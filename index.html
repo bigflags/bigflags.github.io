@@ -15,31 +15,137 @@
     <body>
         <main role="main" id="main">
             <div class="container">
-                <div data-bind="text:title"></div>
-                <div>
-                    Daily: <div data-bind="text:dailyGoal().calls" ></div>
-                </div>
-                <div>
-                    Weekly: <div data-bind="text:weeklyGoal().calls" ></div>
-                </div>
-
- 
-                <div class="row ">
-                    <div class="col-md-12 goal" data-bind="with: weeklyGoal()" >
-                        <h2>Calls This Week</h2>
-                        <div class="goal-label"><span data-bind="text:calls"></span>/<span data-bind="text:callsGoal"></span>&nbsp;calls</div>
-                        <progress-bar-yang params="progress: calls/callsGoal " ></progress-bar-yang>
+                <div class="row">
+                        <div class="col-md-12">
+                            <div class="heading">
+                                    <h1>Weeky Challenge</h1>
+                            </div>
+                       </div>
                     </div>
+        
+                <div class="row yangbars">
+               
+                    <div class="col-md-6 goal" data-bind="with: weeklyCalls()" >
+                        <h2 class="goal-heading">Total Calls</h2>
+                        <div class="goal-label"><span data-bind="text:current"></span>/<span data-bind="text:goal"></span>&nbsp;calls</div>
+                        <progress-bar-yang params="progress: current/goal " ></progress-bar-yang>
+                    </div>
+
+                    <div class="col-md-6 goal" data-bind="with: bankersOnboarded()" >
+                   
+                            <h2 class="goal-heading">Phone Onboarded</h2>
+                            <div class="goal-label"><span data-bind="text:current"></span>/<span data-bind="text:goal"></span>&nbsp;people</div>
+                            <progress-bar-yang params="progress: current/goal " ></progress-bar-yang>
+                        </div>
                    
                 </div>
+ 
+                <div class="col-md-12">
+                        <div class="heading">
+                                <h1>Daily Challenges</h1>
+                        </div>
+              
+                </div>
+
+                <div class="row">
+                        <div class="col-md-4 goal" data-bind="with:dailyCalls">
+                             <div class="metric">
+                                <h2 class="goal-heading">Calls</h2>
+                                <div class="goal-label"><span data-bind="text:current"></span>/<span data-bind="text:goal"></span>&nbsp;calls</div>
+                                <br>
+                                <gague-gonogo params="current:current,goal:goal"></gague-gonogo>
+                               
+                         </div>
+                        </div>
+                        <div class="col-md-4 goal" data-bind="with:dailyConversations">
+                                <div class="metric">
+                                   <h2 class="goal-heading">Conversations</h2>
+                                   <div class="goal-label"><span data-bind="text:current"></span>/<span data-bind="text:goal"></span>&nbsp;calls</div>
+                                   <br>
+                                   <gague-gonogo params="current:current,goal:goal"></gague-gonogo>
+                                  
+                                </div>
+                           </div>
+                        <div class="col-md-4 goal" data-bind="with:mailingListSignups">
+                                <div class="metric">
+                                   <h2 class="goal-heading">e-mail List Signups</h2>
+                                   <div class="goal-label"><span data-bind="text:current"></span>/<span data-bind="text:goal"></span>&nbsp;people</div>
+                                   <br>
+                                   <gague-gonogo params="current:current,goal:goal"></gague-gonogo>
+                                  
+                                </div>
+                        </div>
+
+                </div>
+
+                <div class="col-md-12">
+                        <div class="heading">
+                                <h1>Leader Board</h1>
+                        </div>
+              
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <table class="table">
+                            <thead>
+                         
+                      
+                            <tr>
+                                <th>Caller</th>
+                                <th>Conversations</th>
+                            </tr>
+                        </th>
+                        </thead>                            
+                            <tbody data-bind="foreach:leadersByConversations">
+                                <tr>
+                                    <td data-bind="text:name"></td>
+                                    <td data-bind="text:total"></td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                            <table class="table">
+                                <thead>
+                             
+                          
+                                <tr>
+                                    <th>Caller</th>
+                                    <th>Conversations</th>
+                                </tr>
+                            </th>
+                            </thead>                            
+                                <tbody data-bind="foreach:leadersByMinutes">
+                                    <tr>
+                                        <td data-bind="text:name"></td>
+                                        <td data-bind="text:total"></td>
+    
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+            </div>
+
+            <div class="col-md-12">
+                    <div class="heading">
+                            <h1>About Site</h1>
+
+                                <p>This site is a proof of concenpt and is not affiliated with or endorsed by the Yang Campaign.  Some graphics from Noun Project: Poups and Vectors Point</p>
+                    </div>
+          
+            </div>
+
             </div>
             
+
 
 
         </main>
 
         <script type="text/template" id="progressBarYang">
-
+         
             <svg
             xmlns:dc="http://purl.org/dc/elements/1.1/"
             xmlns:cc="http://creativecommons.org/ns#"
@@ -92,6 +198,89 @@
                 y="0" />
       
          </svg> 
+        </script>
+
+        <script type="text/template" id="gonogo">
+           <svg
+            class="gonogo"
+            xmlns:dc="http://purl.org/dc/elements/1.1/"
+            xmlns:cc="http://creativecommons.org/ns#"
+            xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+            xmlns:svg="http://www.w3.org/2000/svg"
+            xmlns="http://www.w3.org/2000/svg"
+            version="1.1"
+            id="svg10044"
+            width="75"
+            height="75"
+            viewBox="0 0 307.14286 310.48499">
+            <defs
+                id="defs10046" />
+            <metadata
+                id="metadata10049">
+                <rdf:RDF>
+                <cc:Work
+                    rdf:about="">
+                    <dc:format>image/svg+xml</dc:format>
+                    <dc:type
+                    rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+                    <dc:title></dc:title>
+                </cc:Work>
+                </rdf:RDF>
+            </metadata>
+            <g
+                transform="translate(-25.285712,-721.44865)"
+                id="layer1">
+                <g
+                data-bind="attr: {visibility:current}"
+                class="x"
+                style="fill:#da3248;fill-opacity:1"
+                transform="matrix(3.2930473,3.2930473,-3.2930473,3.2930473,628.81445,611.17537)"
+                id="x">
+                <path
+                    id="rect9951-4"
+                    d="m -58.668468,101.34237 -2.97e-4,14.39616 23.979854,0 10e-7,23.97985 14.396453,0 2e-6,-23.97985 23.9798531,0 -2.96e-4,-14.39616 -23.9798541,0 -1e-6,-23.979857 -14.395861,0 1e-6,23.979857 -23.979855,0 z"
+                    style="opacity:1;fill:#da3248;fill-opacity:1;stroke:none;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+                </g>
+                <g
+                data-bind="attr: {visibility:goal}"
+
+
+                class="check"
+                transform="matrix(0.68253968,0,0,0.68253968,25.285712,724.79078)"
+                style="fill:#00aa44"
+                data-name="Calque 2"
+                id="check">
+                <g
+                    transform="translate(498.13959,0)"
+                    style="fill:#00aa44"
+                    data-name="Calque 1"
+                    id="g9859" />
+                <g
+                    style="fill:#00aa44"
+                    data-name="Calque 2"
+                    id="g9863">
+                    <path
+                    d="m 372.71999,150.47999 -1.07,1.08 -193.55,193.54 -101.009996,-101.01 45.579996,-45.57 55.43,55.43 149.04,-149.05 45.58,45.58 z M 224.99999,-4.6981329e-6 C 100.73999,-4.6981329e-6 6.3095727e-6,100.73999 6.3095727e-6,224.99999 6.3095727e-6,349.25999 100.73999,450 224.99999,450 349.25999,450 450,349.25999 450,224.99999 450,100.73999 349.25999,-4.6981329e-6 224.99999,-4.6981329e-6 Z M 355.80998,355.80999 C 284.18,428.66998 167.04998,429.66998 94.189984,358 21.329992,286.33 20.330002,169.28 91.999994,96.419995 l 2.23,-2.230001 C 165.81999,21.329994 282.99999,20.329995 355.80998,91.999996 428.61999,163.66999 429.66998,280.71999 358,353.57999 Z"
+                    style="fill:#00aa44"
+                    id="polygon9865" />
+                </g>
+                </g>
+                <g
+                class="moneybag"
+                data-bind="attr: {visibility:exceeded}"
+                transform="matrix(4.6570721,0,0,4.6570721,21.80459,716.96622)"
+       id="moneybag">
+      <g
+         style="fill:#ffd42a"
+         id="g9915">
+        <path
+           d="m 14.249279,53.818055 37.557998,0 11.768172,-36.796122 c 0.250386,-1.268832 0.250386,-2.537664 -0.500773,-3.172083 -0.75116,-1.268832 -1.752707,-1.586041 -2.503867,-1.268832 L 44.796451,18.92518 34.029824,12.898226 c -0.751159,-0.317208 -1.251933,-0.317208 -2.003092,0 L 21.260105,18.92518 5.4857466,12.581018 c -1.0015466,-0.317209 -2.0030932,0 -2.5038664,0.951623 -0.75116,0.951628 -0.75116,2.22046 -0.5007733,3.172084 z"
+           style="fill:#ffd42a"
+           id="path9925" />
+      </g>
+    </g>
+            </svg>
+
         </script>
 
         <script src="/js/app.js" ></script>
